@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<h1>hello</h1>
+	{% for word in elements %}
+		{% set params = urllib.parse.urlencode({
+     	"q": word,
+     	"api_key": "177RGFUWz19oXOaxUehDL8qjh3DQH2gz",
+     	"limit": "1"
+ 		}) %}
+
+		{% with urllib.request.urlopen(url+params) as response %}
+			{% set data = json.loads(response.read()) %}
+		{% endwith %}
+
+		<p>{{ json.dumps(data, sort_keys=True, indent=4) }}</p>
+	{% endfor %}
+	
+</body>
+</html>
