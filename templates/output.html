@@ -12,7 +12,7 @@
      			"limit": "1"
  		}) %}
 
-		{% with urllib.request.urlopen(url+params) as response %}
+		{% with response = urllib.request.urlopen(url + params) %}
 			{% set data = json.loads(response.read()) %}
 		{% endwith %}
 
